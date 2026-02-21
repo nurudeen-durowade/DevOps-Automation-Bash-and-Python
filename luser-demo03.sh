@@ -13,7 +13,7 @@ echo "Your UID is ${UID}"
 
 
 # Only display if the UID does not match 1000.
-UID_TO_TEST_FOR='100'
+UID_TO_TEST_FOR='1000'
 
 #if [[ "${UID}" -ne "${UID_TO_TEST_FOR}" ]];
 if (( UID != UID_TO_TEST_FOR ))
@@ -21,6 +21,8 @@ then
   echo "Your UID does not match ${UID_TO_TEST_FOR}"
   #exit 1
 fi
+
+# functions in bash
 
 # check_uid() {
 
@@ -35,12 +37,7 @@ fi
 
 #if [[ "${?}" -ne 0 ]];
 
-if ! USER_NAME=$(id -un);
-then
-  echo 'The id command did not execute successfully.'
-  exit 1
-fi
-echo  "Your Username is ${USER_NAME}"
+
 
 
 # You can use a string test conditional
@@ -51,9 +48,11 @@ USER_NAME=$(id -un)
 
 USER_NAME_TO_TEST_FOR='vagrant'
 
+
+
 if [[ "${USER_NAME}" = "${USER_NAME_TO_TEST_FOR}" ]];
 then
-  echo "Your username matches the username that we are testing for"
+  echo "Your username matches ${USER_NAME_TO_TEST_FOR}"
 else
   echo "Your username doesn't match ${USER_NAME_TO_TEST_FOR}"
   exit 1

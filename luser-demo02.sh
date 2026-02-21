@@ -12,7 +12,7 @@ echo "Your UID is ${UID}"
 
 # Display the username
 
-USER_NAME=$(id -un)
+USER_NAME=$(id -un) #store the output of a command into a variabe
 
 
 

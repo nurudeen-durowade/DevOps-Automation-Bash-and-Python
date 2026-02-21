@@ -8,32 +8,44 @@
 
 # Ask for the user name.
 
-read -p 'Enter the username to create: ' USER_NAME
+read -rp 'Enter the username to create: ' USER_NAME
 
 
 
 
 # Ask for the real name.
 
-read -p 'Enter the name of the person who this account is for: ' COMMENT
+read -rp 'Enter the name of the person who this account is for: ' COMMENT
 
 
 
 
 # Ask for the password
 
-read -p 'Enter the password to use for the account: ' PASSWORD
+read -rsp 'Enter the password to use for the account: ' PASSWORD
+
+read -rsp 'Enter the password to use for the account: ' CONFIRM_PASSWORD
+
+
+if (( PASSWORD != CONFIRM_PASSWORD)); then
+    echo " Your passwords are not the same please check again"
+    exit 1
+fi
 
 
 # Create the user.
 
-useradd -c "${COMMENT}" -m ${USER_NAME}
+# -c for comment used for the user's fullname
+
+# -m used to force create a home directory for the user..
+
+useradd -c "${COMMENT}" -m "${USER_NAME}"
 
 
 # Set the password for the user.
 
-echo ${PASSWORD} | passwd --stdin ${USER_NAME}
+echo "${PASSWORD}" | passwd --stdin "${USER_NAME}"
 
 # Force change password on the first login.
 
-passwd --expire ${USER_NAME}
+passwd --expire "${USER_NAME}"
