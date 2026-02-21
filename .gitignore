@@ -1,0 +1,14 @@
+# Ignore editor temp files
+*.swp
+*.swo
+*.bak
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore compiled binaries (if any)
+*.out
