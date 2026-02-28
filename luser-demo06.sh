@@ -16,11 +16,24 @@ echo "You executed this command ${0}"
 
 # Display the path and filename of the script.
 
-echo "You used $(dirname ${0}) as the path and $(basename ${0}) script."
+echo "You used $(dirname "${0}") as the path and $(basename "${0}") script."
 
 # Tell them how many arguments they passed in.
 # (Inside the script they are parameters, outside they are arguments.)
+
+
+# $0 represent like the actual command 
+
+# $# represent the number of parameters inputed.
+
+# $@ is the list of positional parameters starting as $1
+
+# $* is the list of positional parameter, but requires them to separated  by quotation marks. else it will be treated as parameter
+
+
 NUMBER_OF_PARAMETERS="${#}"
+
+
 
 echo "You supplied ${NUMBER_OF_PARAMETERS} argument(s) on the command line."
 
@@ -35,8 +48,8 @@ fi
 
 # Generate and display a password for each parameters
 
-for USER_NAME in "${@}"
+for USER_NAME in "${@}";
 do
   PASSWORD=$(date +%s%N | sha256sum | head -c48)
-  echo "${USER_NAME}: ${PASSWORD}"
+  echo "${USER_NAME}: ${PASSWORD}";
 done
